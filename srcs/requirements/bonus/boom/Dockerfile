@@ -1,8 +1,8 @@
-FROM debian:bookworm
+FROM debian:bullseye
 
 WORKDIR /app
 
-RUN apt-get uppdate && apt-get install nodejs -y
+RUN apt-get update && apt-get install nodejs -y
 
 RUN apt-get install npm -y
 

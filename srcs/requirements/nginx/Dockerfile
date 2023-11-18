@@ -1,13 +1,13 @@
-FROM debian:buster
+FROM debian:bullseye
 
-RUN apt-get update && apt install -y nginx openssl
+RUN apt-get update && apt install -y nginx && apt install openssl
 
-COPY ./conf/nginx.conf /etc/nginx/conf.d/default.conf
+COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 COPY ./tools/script.sh .
 
-RUN chmod +x script.sh
+RUN chmod +x ./script.sh
 
-EXPOSE 443
+RUN ./script.sh
 
-ENTRYPOINT [ "./script.sh" ]
+CMD [ "nginx"]

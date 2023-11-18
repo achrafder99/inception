@@ -1,11 +1,126 @@
-version: '3'
+version: '3.4'
 services:
   nginx:
+    container_name: nginx
     build:
-      context: requirements/nginx
+      context: ./requirements/nginx
       dockerfile: Dockerfile
     ports:
       - "443:443"
     env_file:
       - .env
+    depends_on:
+      - wordpress
+    volumes:
+      - wordpress-data:/var/www/html
+    networks:
+      - internal
     restart: always
+  wordpress:
+    container_name: wordpress
+    build:
+      context: ./requirements/wordpress
+      dockerfile: Dockerfile
+    networks:
+      - internal
+    restart: always
+    ports:
+      - "9000:9000"
+    depends_on:
+      - mariadb
+    volumes:
+      - wordpress-data:/var/www/html
+    env_file:
+      - .env
+  mariadb:
+    container_name: mariadb
+    build:
+      context: ./requirements/mariadb
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    networks:
+      - internal
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: always
+  redis:
+    container_name: redis
+    build:
+      context: ./requirements/bonus/redis
+      dockerfile: Dockerfile
+    ports:
+      - "6379:6379"
+    networks:
+      - internal
+    depends_on:
+      - wordpress
+    restart: always
+  apache2:
+    container_name: apache2
+    build:
+      context: ./requirements/bonus/apache2
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    restart: always
+  adminer:
+    container_name: adminer
+    build:
+      context: ./requirements/bonus/adminer
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    networks:
+      - internal
+    restart: always
+  ftp:
+    container_name: ftp
+    build:
+      context: ./requirements/bonus/ftp
+      dockerfile: Dockerfile
+    environment:
+        - USER_FTP=adardour
+        - PASS_FTP=1234
+    ports:
+      - "21:21"
+      - "20:20"
+    networks:
+      - internal
+    volumes:
+      - wordpress-data:/home/adardour
+  boom:
+    container_name: boom
+    build: 
+      context: ./requirements/bonus/boom
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - internal
+    restart: always
+
+networks:
+  internal:
+
+volumes:
+  mariadb:
+    name: mariadb
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/adardour/data/mariadb
+  wordpress-data:
+    name: wordpress
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /home/adardour/data/wordpress
