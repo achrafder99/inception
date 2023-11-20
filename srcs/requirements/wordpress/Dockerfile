@@ -52,12 +52,14 @@ RUN rm -rf latest.zip
 
 RUN rm -rf wordpress
 
+COPY ./tools/script.sh .
+
+RUN chmod +x ./script.sh
+
 RUN chown -R www-data:www-data /var/www/html/wp-content
 
 RUN chmod -R 755 /var/www/html/wp-content
 
-# Expose port for PHP-FPM
 EXPOSE 9000
 
-# Start PHP-FPM
-CMD ["php-fpm7.4", "-F"]
+CMD ["./script.sh"]

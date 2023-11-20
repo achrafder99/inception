@@ -20,13 +20,13 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'inception' );
+define( 'DB_NAME', 'MYSQL_DB' );
 
 /** Database username */
-define( 'DB_USER', 'achraf' );
+define( 'DB_USER', 'MYSQL_USER' );
 
 /** Database password */
-define( 'DB_PASSWORD', '1234' );
+define( 'DB_PASSWORD', 'MYSQL_PASSWORD' );
 
 /** Database hostname */
 define( 'DB_HOST', 'mariadb' );
@@ -40,9 +40,9 @@ define( 'DB_COLLATE', '' );
 define('WP_CACHE', true);
 
 // adjust Redis host and port if necessary 
-define( 'WP_REDIS_HOST', 'redis' );
-define( 'WP_REDIS_PORT', 6379 );
-define('WP_REDIS_PASSWORD', '1234');
+define( 'WP_REDIS_HOST', 'WP_REDIS_HOST' );
+define( 'WP_REDIS_PORT', WP_REDIS_PORT );
+define('WP_REDIS_PASSWORD', 'WP_REDIS_PASSWORD');
 // change the prefix and database for each site to avoid cache data collisions
 
 // reasonable connection and read+write timeouts
