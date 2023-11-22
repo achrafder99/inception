@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
     gnupg \
     lsb-release \
     wget \
-    unzip
+    unzip \
+    git
 
 # Add PHP repository
 RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
@@ -58,8 +59,8 @@ RUN chmod +x ./script.sh
 
 RUN chown -R www-data:www-data /var/www/html/wp-content
 
-RUN chmod -R 755 /var/www/html/wp-content
+RUN chmod -R 755 /var/www/html /var/www/html/wp-content
 
 EXPOSE 9000
 
-CMD ["./script.sh"]
+CMD ["php-fpm7.4", "-F"]

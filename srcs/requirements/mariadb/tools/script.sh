@@ -24,4 +24,4 @@ while mysqladmin ping -hmariadb --silent 2>/dev/null; do
   sleep 1
 done
 
-exec mysqld -u mysql
+exec mysqld

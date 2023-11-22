@@ -40,9 +40,9 @@ define( 'DB_COLLATE', '' );
 define('WP_CACHE', true);
 
 // adjust Redis host and port if necessary 
-define( 'WP_REDIS_HOST', 'WP_REDIS_HOST' );
-define( 'WP_REDIS_PORT', WP_REDIS_PORT );
-define('WP_REDIS_PASSWORD', 'WP_REDIS_PASSWORD');
+define( 'WP_REDIS_HOST', 'WP_REDIS_HOST_' );
+define( 'WP_REDIS_PORT', 'WP_REDIS_PORT_' );
+define('WP_REDIS_PASSWORD', 'WP_REDIS_PASSWORD_');
 // change the prefix and database for each site to avoid cache data collisions
 
 // reasonable connection and read+write timeouts
