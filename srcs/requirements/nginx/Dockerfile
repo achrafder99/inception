@@ -8,6 +8,4 @@ COPY ./tools/script.sh .
 
 RUN chmod +x ./script.sh
 
-RUN ./script.sh
-
-CMD [ "nginx"]
+CMD [ "./script.sh"]

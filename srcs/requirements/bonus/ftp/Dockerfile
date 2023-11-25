@@ -7,7 +7,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-COPY ./vsftpd.conf /etc/vsftpd.conf
+COPY ./conf/vsftpd.conf /etc/vsftpd.conf
 
 COPY ./tools/script.sh .
 

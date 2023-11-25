@@ -3,6 +3,7 @@
 sed -i "s/MYSQL_DB/$MYSQL_DB/g" init.sql
 sed -i "s/MYSQL_USER/$MYSQL_USER/g" init.sql
 sed -i "s/MYSQL_PASSWORD/$MYSQL_PASSWORD/g" init.sql
+sed -i "s/PASS_ROOT/$MYSQL_ROOT_PASSWORD/g" init.sql
 
 if [ ! -d /var/lib/mysql/mysql ]; then
   mysql_install_db --user=root
@@ -24,4 +25,4 @@ while mysqladmin ping -hmariadb --silent 2>/dev/null; do
   sleep 1
 done
 
-exec mysqld
+exec mysqld -u root -p"${$MYSQL_ROOT_PASSWORD}"
