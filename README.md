@@ -16,13 +16,14 @@ Docker is a platform that enables developers to build, package, and deploy appli
 
 <li>Networking and Volumes</li> Docker provides networking capabilities to connect containers and allows data to persist beyond the lifecycle of a container using volumes.
 </ul>
-## What is a container 
 
+## What is a container 
 In the world of Docker, a container is like a self-contained box for your application. It packages up your code, runtime environment, system tools, and settings into a single unit that can run on any Linux system, regardless of the underlying infrastructure.
 
 Here's a breakdown of what a Docker container is and what it does:
 
-<li>Isolation:</li>
+<ul>
+  <li>Isolation:</li>
 Containerized applications are isolated from each other and the host system. This means they don't share resources or interfere with each other, making them more secure and predictable.
 
 <li>Portability:</li>
@@ -33,3 +34,4 @@ Docker containers are based on standardized images, which are pre-built packages
 
 <li>Efficiency:</li>
 Containers share the underlying operating system kernel with the host system, which makes them more efficient than virtual machines. They start up faster and consume fewer resources, making them ideal for microservices and cloud-native applications.
+</ul>
