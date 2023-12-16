@@ -57,6 +57,7 @@ Docker volumes can be managed using Docker commands or specified in a Docker Com
 <h1>This Exemple show you how volume can save us</h1>
 <img src="https://i.stack.imgur.com/qYlWg.png"/>
 </div>
+
 ## Docker Networks Overview
 Docker networks are virtualized environments that enable communication and interaction between Docker containers. They facilitate isolation, security, and efficient data exchange among containers, either on the same host or across multiple hosts.
 
