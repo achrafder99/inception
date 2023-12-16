@@ -86,21 +86,21 @@ The Dockerfile supports the following instructions:
 Instruction	Description
 | Instruction    | Description                               |
 |----------------|-------------------------------------------|
-| `<ARG>`        | Use build-time variables.                  |
-| `<CMD>`        | Specify default commands.                  |
-| `<COPY>`       | Copy files and directories.                |
-| `<ENTRYPOINT>` | Specify default executable.                |
-| `<ENV>`        | Set environment variables.                 |
-| `<EXPOSE>`     | Describe which ports your app is listening on. |
-| `<FROM>`       | Create a new build stage from a base image.|
-| `<HEALTHCHECK>`| Check a container's health on startup.     |
-| `<LABEL>`      | Add metadata to an image.                  |
-| `<MAINTAINER>` | Specify the author of an image.            |
-| `<ONBUILD>`    | Specify instructions for image usage in a build. |
-| `<RUN>`        | Execute build commands.                    |
-| `<SHELL>`      | Set the default shell of an image.         |
-| `<STOPSIGNAL>` | Specify system call signal for container exit. |
-| `<USER>`       | Set user and group ID.                     |
-| `<VOLUME>`     | Create volume mounts.                      |
-| `<WORKDIR>`    | Change working directory.                  |
+| `ARG`        | Use build-time variables.                  |
+| `CMD`        | Specify default commands.                  |
+| `COPY`       | Copy files and directories.                |
+| `ENTRYPOINT` | Specify default executable.                |
+| `ENV`        | Set environment variables.                 |
+| `EXPOSE`     | Describe which ports your app is listening on. |
+| `FROM`       | Create a new build stage from a base image.|
+| `HEALTHCHECK`| Check a container's health on startup.     |
+| `LABEL`      | Add metadata to an image.                  |
+| `MAINTAINER` | Specify the author of an image.            |
+| `ONBUILD`    | Specify instructions for image usage in a build. |
+| `RUN`        | Execute build commands.                    |
+| `SHELL`      | Set the default shell of an image.         |
+| `STOPSIGNAL` | Specify system call signal for container exit. |
+| `USER`       | Set user and group ID.                     |
+| `VOLUME`     | Create volume mounts.                      |
+| `WORKDIR`    | Change working directory.                  |
 
