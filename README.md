@@ -85,7 +85,7 @@ The Dockerfile supports the following instructions:
 
 Instruction	Description
 <!-- Add local or remote files and directories -->
-<div style="background-color: #FFD700; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+<div style="background-color: red; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
     <strong>ARG</strong> - Use build-time variables.
 </div>
 
