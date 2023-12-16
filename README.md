@@ -53,3 +53,6 @@ Volumes can be shared among multiple containers, enabling them to access and mod
 
 Docker volumes can be managed using Docker commands or specified in a Docker Compose file to define and control data persistence for containers. They can be either anonymous (automatically created by Docker) or named (user-defined). Additionally, various volume drivers exist, allowing you to store data in different types of external storage systems like local directories, cloud storage, network storage, and more.
 </ul>
+<div>
+<img src="/home/winkh99/Downloads/volume.png"/>
+</div>
