@@ -105,5 +105,5 @@ Instruction	Description
 | `WORKDIR`    | Change working directory.                  |
 
 ex of dockerfile
-<img src="https://pasteboard.co/QlL2rUCC64n9.png"/>
+<img src="https://pasteboard.co/QlL2rUCC64n9.png" />
 
