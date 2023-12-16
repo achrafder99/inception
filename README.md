@@ -76,3 +76,95 @@ There are different types of Docker networks:
 </ul>
 
 <img src="https://media.licdn.com/dms/image/C4D12AQFgagv9ZJHwrw/article-cover_image-shrink_720_1280/0/1593688043720?e=1707955200&v=beta&t=iy7NVfVvCKA3YeXTIsny5G6KsGv1cbf_F8HMLemWhhw"/>
+
+## Understanding Dockerfiles and dockercompose
+Docker can build images automatically by reading the instructions from a Dockerfile. A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image. This page describes the commands you can use in a Dockerfile.
+
+Overview
+The Dockerfile supports the following instructions:
+
+Instruction	Description
+<!-- Add local or remote files and directories -->
+<div style="background-color: #FFD700; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>ARG</strong> - Use build-time variables.
+</div>
+
+<!-- Specify default commands -->
+<div style="background-color: #90EE90; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>CMD</strong> - Specify default commands.
+</div>
+
+<!-- Copy files and directories -->
+<div style="background-color: #ADD8E6; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>COPY</strong> - Copy files and directories.
+</div>
+
+<!-- Specify default executable -->
+<div style="background-color: #FFA07A; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>ENTRYPOINT</strong> - Specify default executable.
+</div>
+
+<!-- Set environment variables -->
+<div style="background-color: #FFC0CB; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>ENV</strong> - Set environment variables.
+</div>
+
+<!-- Describe which ports your application is listening on -->
+<div style="background-color: #FF6347; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>EXPOSE</strong> - Describe which ports your application is listening on.
+</div>
+
+<!-- Create a new build stage from a base image -->
+<div style="background-color: #7FFFD4; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>FROM</strong> - Create a new build stage from a base image.
+</div>
+
+<!-- Check a container's health on startup -->
+<div style="background-color: #87CEEB; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>HEALTHCHECK</strong> - Check a container's health on startup.
+</div>
+
+<!-- Add metadata to an image -->
+<div style="background-color: #FFDAB9; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>LABEL</strong> - Add metadata to an image.
+</div>
+
+<!-- Specify the author of an image -->
+<div style="background-color: #D8BFD8; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>MAINTAINER</strong> - Specify the author of an image.
+</div>
+
+<!-- Specify instructions for when the image is used in a build -->
+<div style="background-color: #F0E68C; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>ONBUILD</strong> - Specify instructions for when the image is used in a build.
+</div>
+
+<!-- Execute build commands -->
+<div style="background-color: #9ACD32; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>RUN</strong> - Execute build commands.
+</div>
+
+<!-- Set the default shell of an image -->
+<div style="background-color: #FFB6C1; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>SHELL</strong> - Set the default shell of an image.
+</div>
+
+<!-- Specify the system call signal for exiting a container -->
+<div style="background-color: #00FFFF; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>STOPSIGNAL</strong> - Specify the system call signal for exiting a container.
+</div>
+
+<!-- Set user and group ID -->
+<div style="background-color: #B0E0E6; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>USER</strong> - Set user and group ID.
+</div>
+
+<!-- Create volume mounts -->
+<div style="background-color: #FFA500; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>VOLUME</strong> - Create volume mounts.
+</div>
+
+<!-- Change working directory -->
+<div style="background-color: #EEE8AA; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+    <strong>WORKDIR</strong> - Change working directory.
+</div>
