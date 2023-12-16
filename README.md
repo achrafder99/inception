@@ -73,4 +73,7 @@ There are different types of Docker networks:
 <li>Macvlan Network</li> This type of network assigns a MAC address to each container, making it appear as a physical device on the network, allowing containers to behave like physical devices on the network.
 
 <li>Custom Networks</li> Users can create custom networks with specific configurations like subnet, gateway, etc., for better control over container communication and network behavior.
+
+<img src="https://media.licdn.com/dms/image/C4D12AQFgagv9ZJHwrw/article-cover_image-shrink_720_1280/0/1593688043720?e=1707955200&v=beta&t=iy7NVfVvCKA3YeXTIsny5G6KsGv1cbf_F8HMLemWhhw"/>
+
 </ul>
