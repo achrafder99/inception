@@ -14,6 +14,6 @@ Docker is a platform that enables developers to build, package, and deploy appli
 
 <li>Registry</li> Docker images can be stored in registries like Docker Hub, a public repository, or private registries. These registries allow users to share and distribute their images.
 
-<li>Networking and Volumes</li>: Docker provides networking capabilities to connect containers and allows data to persist beyond the lifecycle of a container using volumes.
+<li>Networking and Volumes</li> Docker provides networking capabilities to connect containers and allows data to persist beyond the lifecycle of a container using volumes.
   
 </ul>
