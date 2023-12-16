@@ -104,6 +104,8 @@ Instruction	Description
 | `VOLUME`     | Create volume mounts.                      |
 | `WORKDIR`    | Change working directory.                  |
 
-ex of dockerfile
-<img src="https://pasteboard.co/QlL2rUCC64n9.png" />
+
+<div>
+  <img src="https://pasteboard.co/QlL2rUCC64n9.png" />
+</div>
 
