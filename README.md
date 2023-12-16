@@ -36,7 +36,8 @@ Docker containers are based on standardized images, which are pre-built packages
 Containers share the underlying operating system kernel with the host system, which makes them more efficient than virtual machines. They start up faster and consume fewer resources, making them ideal for microservices and cloud-native applications.
 </ul>
 
-##What is a volume
+## What is a volume
+
 A Docker volume is a persistent data storage mechanism used in Docker containers. It enables data to persist beyond the lifespan of a container. When a Docker container is removed, any data that was created or modified within the container's filesystem is usually lost. However, Docker volumes provide a way to store and manage data separately from the container itself.
 
 <ul>
