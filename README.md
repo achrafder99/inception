@@ -1,8 +1,8 @@
 ## Project Overview: Docker-based System Infrastructure
-
 This project dives deep into system administration using Docker, challenging individuals to set up a robust infrastructure within a virtual machine environment. From configuring NGINX with strict TLS protocols to orchestrating WordPress, php-fpm, and MariaDB containers, participants build Docker images, employ volumes for databases and website files, and establish network connections between containers. Comprising mandatory and bonus tasks, it emphasizes adherence to best practices, secure configuration without publicly exposed credentials, and optional advanced services like Redis cache and an FTP server. The project’s success hinges on meticulous implementation of Dockerfiles, networking, and environment variable usage, culminating in a fully functional and secure system. This GitHub repository showcases the mastery of Docker orchestration and system administration skills.
 
 ## What is A docker and how its work 
+Docker is a platform that enables developers to build, package, and deploy applications within containers. Containers are a form of lightweight, portable, and self-sufficient units that encapsulate software and its dependencies, ensuring consistency across different environments.
 <ul>
 <li>Docker Engine</li> At its core is the Docker Engine, which manages the containers. It consists of a server (daemon) and a REST API, allowing users to interact with Docker. The Docker client communicates with the Docker daemon via commands.
 
