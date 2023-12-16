@@ -4,15 +4,15 @@ This project dives deep into system administration using Docker, challenging ind
 
 ## What is A docker and how its work 
 <ul>
-<li>Docker Engine</li>: At its core is the Docker Engine, which manages the containers. It consists of a server (daemon) and a REST API, allowing users to interact with Docker. The Docker client communicates with the Docker daemon via commands.
+<li>Docker Engine</li> At its core is the Docker Engine, which manages the containers. It consists of a server (daemon) and a REST API, allowing users to interact with Docker. The Docker client communicates with the Docker daemon via commands.
 
-<li>Images</li>: Containers are created based on Docker images. Images are templates that contain everything needed to run an application: the code, runtime, system tools, libraries, and settings. Images are built from Dockerfiles, which are text files containing instructions to assemble an image.
+<li>Images</li> Containers are created based on Docker images. Images are templates that contain everything needed to run an application: the code, runtime, system tools, libraries, and settings. Images are built from Dockerfiles, which are text files containing instructions to assemble an image.
 
-<li>Containers</li>: When you run an image, it becomes a container. Containers are instances of images that can be started, stopped, moved, and deleted. They run in isolation from each other and share the resources of the host machine.
+<li>Containers</li> When you run an image, it becomes a container. Containers are instances of images that can be started, stopped, moved, and deleted. They run in isolation from each other and share the resources of the host machine.
 
-<li>Dockerfile</li>: This is a text file that contains instructions for building a Docker image. It includes commands to specify the base image, install dependencies, copy files, set environment variables, and define what happens when the container starts.
+<li>Dockerfile</li> This is a text file that contains instructions for building a Docker image. It includes commands to specify the base image, install dependencies, copy files, set environment variables, and define what happens when the container starts.
 
-<li>Registry</li>: Docker images can be stored in registries like Docker Hub, a public repository, or private registries. These registries allow users to share and distribute their images.
+<li>Registry</li> Docker images can be stored in registries like Docker Hub, a public repository, or private registries. These registries allow users to share and distribute their images.
 
 <li>Networking and Volumes</li>: Docker provides networking capabilities to connect containers and allows data to persist beyond the lifecycle of a container using volumes.
   
