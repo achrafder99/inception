@@ -57,3 +57,19 @@ Docker volumes can be managed using Docker commands or specified in a Docker Com
 <h1>This Exemple show you how volume can save us</h1>
 <img src="https://i.stack.imgur.com/qYlWg.png"/>
 </div>
+## Docker Networks Overview
+Docker networks are virtualized environments that enable communication and interaction between Docker containers. They facilitate isolation, security, and efficient data exchange among containers, either on the same host or across multiple hosts.
+
+<ul>
+There are different types of Docker networks:
+
+<li>Bridge Network</li> This is the default network created when you install Docker. It allows containers to communicate on the same Docker daemon host. Each container in a bridge network gets its own IP address.
+
+<li>Host Network</li>Using this mode, a container shares the network namespace with the host. It doesn't get its own isolated network stack and uses the host's network directly.
+
+<li>Overlay Network</li> It facilitates communication between containers across multiple Docker daemon hosts. It's used in Docker Swarm mode to enable communication among containers running on different hosts.
+
+<li>Macvlan Network</li> This type of network assigns a MAC address to each container, making it appear as a physical device on the network, allowing containers to behave like physical devices on the network.
+
+<li>Custom Networks</li> Users can create custom networks with specific configurations like subnet, gateway, etc., for better control over container communication and network behavior.
+</ul>
