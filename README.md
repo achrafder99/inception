@@ -153,3 +153,21 @@ Networks allow containers to communicate with each other. You can define custom 
 <li>Volumes</li>
 Volumes provide persistent storage for your containers. They allow data to persist even if the containers are stopped or removed.
 </ul>
+
+Here's an example of a docker-compose.yml file for a simple web application using Docker Compose:
+version: '3.8'
+
+```services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+```
