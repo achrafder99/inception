@@ -104,7 +104,6 @@ Instruction	Description
 | `VOLUME`     | Create volume mounts.                      |
 | `WORKDIR`    | Change working directory.                  |
 
-
 ## Exemple Running the Node.js Application with Docker
 
 To run this Node.js application using Docker, follow these steps:
@@ -113,7 +112,7 @@ To run this Node.js application using Docker, follow these steps:
 
 2. Create a `Dockerfile` in the root directory of your Node.js application and paste the following content:
 
-```dockerfile
+``dockerfile
 # Use the official Node.js 14 image as the base image
 FROM node:14
 
@@ -133,7 +132,4 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to start the application
-CMD ["node", "app.js"]```
-
-## Docker compose
-
+CMD ["node", "app.js"]``
