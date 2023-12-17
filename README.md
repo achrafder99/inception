@@ -259,3 +259,25 @@ For example, to run a container using the nginx image and mount the `my_volume` 
 This command will start a container using the Nginx image and link the specified volume to the `/usr/share/nginx/html` directory in the container. Any data written to that directory in the container will be stored in the `my_volume` volume on your host machine.
 
 Remember, volumes persist data even if the container is removed, making them useful for storing and sharing persistent data between containers.
+
+## Create a Custom Network
+`docker network create my_network`
+Replace my_network with your desired network name.
+
+### Run Containers on the Custom Network
+To run containers on the created network, use the --network flag followed by the network name when starting a container.
+
+For example, let's say you have two containers - nginx1 and nginx2 - and you want them to communicate on the my_network network. You can start these containers on the same network using the following commands:
+
+##### Start `nginx1` container on the network
+` docker run -d --network my_network --name nginx1 nginx`
+Start `nginx2` container on the same network:
+` docker run -d --network my_network --name nginx2 nginx` 
+Now both ` nginx1`  and ` nginx2`  are connected to the my_network network.
+##### Verify Connectivity
+Containers on the same network can communicate with each other using their container names as hostnames. To test connectivity, you can access one container from another using its hostname within the network.
+
+For example, if you want to access `nginx1` from `nginx2`, you can do so using:
+`docker exec -it nginx2 ping nginx1`
+
+
