@@ -256,6 +256,6 @@ When running a container, you can specify the volume using the `-v` flag followe
 
 For example, to run a container using the nginx image and mount the `my_volume` volume to the `/usr/share/nginx/html` directory within the container, you can use the following command:
 `docker run -d -v my_volume:/usr/share/nginx/html --name my_nginx nginx`
-This command will start a container using the Nginx image and link the specified volume to the /usr/share/nginx/html directory in the container. Any data written to that directory in the container will be stored in the my_volume volume on your host machine.
+This command will start a container using the Nginx image and link the specified volume to the `/usr/share/nginx/html` directory in the container. Any data written to that directory in the container will be stored in the `my_volume` volume on your host machine.
 
 Remember, volumes persist data even if the container is removed, making them useful for storing and sharing persistent data between containers.
