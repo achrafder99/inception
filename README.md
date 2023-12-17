@@ -243,3 +243,19 @@ sudo usermod -aG docker $USER
 `-p 8080:80`: Maps port 8080 on your local machine to port 80 inside the container. This allows accessing Nginx from localhost:8080.
 `--name mynginx`: Assigns a name "mynginx" to your container.
 `nginx`: The name of the image to use for creating the container.
+## Steps to create volumes 
+
+`docker volume create my_volume`
+Replace my_volume with the desired name for your volume. This command will create a Docker volume with the specified name.
+`docker volume ls`
+You should see your newly created volume in the list.
+
+
+## Use the Volume in a Container
+When running a container, you can specify the volume using the `-v` flag followed by the volume name and the path where it should be mounted inside the container.
+
+For example, to run a container using the nginx image and mount the `my_volume` volume to the `/usr/share/nginx/html` directory within the container, you can use the following command:
+`docker run -d -v my_volume:/usr/share/nginx/html --name my_nginx nginx`
+This command will start a container using the Nginx image and link the specified volume to the /usr/share/nginx/html directory in the container. Any data written to that directory in the container will be stored in the my_volume volume on your host machine.
+
+Remember, volumes persist data even if the container is removed, making them useful for storing and sharing persistent data between containers.
