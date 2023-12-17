@@ -180,3 +180,51 @@ networks:
 `docker search <image_name>` Search for an image in Docker Hub
 `docker pull <image_name>` Pull an image from a registry
 `docker push <image_name>`Push an image to a registry
+
+## Steps to Build and Run a Docker Container
+###### Step 1: Install Docker
+Ensure Docker is installed on your system. You can download it from the official [Docker website](https://www.docker.com/products/docker-desktop/)
+### 1. Update Package Manager
+Ensure your package manager is up to date:
+```bash
+sudo apt-get update  # For Ubuntu/Debian
+sudo yum update      # For CentOS/Fedora
+```
+
+### 2. Install Dependencies
+```
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release  # For Ubuntu/Debian
+sudo yum install -y \
+    yum-utils \
+    device-mapper-persistent-data \
+    lvm2  # For CentOS/Fedora
+```
+### 3. Add Docker Repository Key
+```
+curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+```
+### 4. Add Docker Repository
+```
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+```
+### 5. Install Docker Engine
+```
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io  # For Ubuntu/Debian
+sudo yum install docker-ce docker-ce-cli containerd.io       # For CentOS/Fedora
+```
+### 6. Verify Installation
+```
+sudo docker run hello-world
+```
+### 7. Manage Docker as a Non-root User (Optional)
+```
+sudo usermod -aG docker $USER
+```
