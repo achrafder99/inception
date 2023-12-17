@@ -228,3 +228,14 @@ sudo docker run hello-world
 ```
 sudo usermod -aG docker $USER
 ```
+
+### build a ready made image 
+  ```
+  # pull image of nginx
+  docker pull nginx
+  ```
+### build a ready made image 
+  ``` # run the image
+  docker nginx -d -p 8080:8080 --name nginx nginx
+  ```
+    
