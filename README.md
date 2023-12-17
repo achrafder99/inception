@@ -173,10 +173,10 @@ networks:
     driver: bridge
 ```
 ## Explain most command that used in docker
-`docker version`: Display Docker version information.
-`docker info`: Display system-wide information about Docker.
-`docker login`: Log in to a Docker registry.
-`docker logout`: Log out from a Docker registry.
-`docker search <image_name>`: Search for an image in Docker Hub.
-`docker pull <image_name>`: Pull an image from a registry.
-`docker push <image_name>`: Push an image to a registry.
+`docker version` Display Docker version information
+`docker info`  Display system-wide information about Docker
+`docker login` Log in to a Docker registry
+`docker logout` Log out from a Docker registry
+`docker search <image_name>` Search for an image in Docker Hub
+`docker pull <image_name>` Pull an image from a registry
+`docker push <image_name>`Push an image to a registry
