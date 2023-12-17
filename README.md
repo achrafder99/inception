@@ -105,7 +105,33 @@ Instruction	Description
 | `WORKDIR`    | Change working directory.                  |
 
 
-<div>
-  <img src="https://pasteboard.co/QlL2rUCC64n9.png" />
-</div>
+## Running the Node.js Application with Docker
+
+To run this Node.js application using Docker, follow these steps:
+
+1. Ensure you have Docker installed on your machine.
+
+2. Create a `Dockerfile` in the root directory of your Node.js application and paste the following content:
+
+```dockerfile
+# Use the official Node.js 14 image as the base image
+FROM node:14
+
+# Create and set the working directory in the container
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application files to the working directory
+COPY . .
+
+# Expose a port that the application will run on
+EXPOSE 3000
+
+# Define the command to start the application
+CMD ["node", "app.js"]
 
