@@ -154,9 +154,10 @@ Networks allow containers to communicate with each other. You can define custom 
 Volumes provide persistent storage for your containers. They allow data to persist even if the containers are stopped or removed.
 </ul>
 
-Here's an example of a ```docker-compose.yml file for a simple web application using Docker Compose:
+Here's an example of a docker-compose.yml file for a simple web application using Docker Compose:
 version: '3.8'
 
+```
 services:
   web:
     image: nginx:latest
