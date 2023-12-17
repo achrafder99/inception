@@ -133,5 +133,7 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to start the application
-CMD ["node", "app.js"]
+CMD ["node", "app.js"]```
+
+## Docker compose
 
