@@ -105,7 +105,7 @@ Instruction	Description
 | `WORKDIR`    | Change working directory.                  |
 
 
-## Running the Node.js Application with Docker
+## Exemple Running the Node.js Application with Docker
 
 To run this Node.js application using Docker, follow these steps:
 
