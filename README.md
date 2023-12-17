@@ -234,8 +234,12 @@ sudo usermod -aG docker $USER
   # pull image of nginx
   docker pull nginx
   ```
-### build a ready made image 
+### run nginx image
   ``` # run the image
-  docker nginx -d -p 8080:8080 --name nginx nginx
+  docker nginx -d -p 8080:8080 --name mynginx nginx
   ```
-    
+`docker run` Command to run a container.
+`-d` Runs the container in detached mode (in the background).
+`-p 8080:80`: Maps port 8080 on your local machine to port 80 inside the container. This allows accessing Nginx from localhost:8080.
+`--name mynginx`: Assigns a name "mynginx" to your container.
+`nginx`: The name of the image to use for creating the container.
