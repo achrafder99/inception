@@ -112,7 +112,7 @@ To run this Node.js application using Docker, follow these steps:
 
 2. Create a `Dockerfile` in the root directory of your Node.js application and paste the following content:
 
-``dockerfile
+```dockerfile
 # Use the official Node.js 14 image as the base image
 FROM node:14
 
@@ -132,4 +132,10 @@ COPY . .
 EXPOSE 3000
 
 # Define the command to start the application
-CMD ["node", "app.js"]``
+CMD ["node", "app.js"]
+```
+## Docker compose
+
+Docker Compose is a tool used to define and manage multi-container Docker applications. It allows you to define a set of containers, their configurations, and how they interact with each other in a single file, usually named docker-compose.yml. This file describes the services, networks, volumes, and other configurations needed to run a complex application consisting of multiple interconnected containers.
+
+By using Docker Compose, you can easily spin up or tear down an entire application environment with a single command. It simplifies the process of orchestrating multiple Docker containers, making development, testing, and deployment more manageable and reproducible across different environments.
