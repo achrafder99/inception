@@ -303,8 +303,7 @@ Configuring TLS in Nginx involves setting up SSL certificates, defining protocol
 #### 4. run to container in forgound not in background
     ` CMD ["nginx"]`
 
-`
-user www-data;
+`user www-data;
 daemon off;
 
 events
