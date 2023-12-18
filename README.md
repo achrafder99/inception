@@ -411,5 +411,9 @@ RUN ./script.sh
 ```
 # Run the container 
 ```bash
-	docker build -t nginx .
+docker build -t nginx .
+```
+`-t` for giving tagname to the image, `.` the dot is for where your Dockfile file is located
+```bash
+docker -d -p 443:443 --name nginx nginx
 ```
