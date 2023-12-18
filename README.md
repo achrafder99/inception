@@ -410,4 +410,3 @@ RUN chmod +x ./script.sh \
 RUN ./script.sh
 ```
 
-
