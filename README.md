@@ -398,9 +398,18 @@ That line is a command used with OpenSSL, a tool for generating SSL certificates
 
 ##### after that add this lines to your Dockerfile
 ```Dockerfile
-RUN mkdir -p /etc/nginx/ssl \
-    && COPY /tools/script.sh . \
-    && chmod +x ./script.sh \
-    && ./script.sh
+RUN mkdir -p /etc/nginx/ssl
 ```
+```Dockerfile
+COPY /tools/script.sh . 
+```
+
+```
+RUN chmod +x ./script.sh \
+```
+
+```
+RUN ./script.sh
+```
+
 
