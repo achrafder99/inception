@@ -375,3 +375,23 @@ In your Nginx configuration file (usually nginx.conf), add the line `daemon off;
 #### 2. Using Docker CMD
 Alternatively, you can run Nginx with the `-g "daemon off;"` argument using Docker's CMD in your Dockerfile. This command starts Nginx in foreground mode.
 `CMD ["nginx", "-g", "daemon off;"]`
+
+## install ssl 
+inside your tools directery create a file with extention `.sh` cause we want to execute it while the container is running
+add this line to the file `openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/ssl/cert.key -out /etc/nginx/ssl/cert.crt -subj "/C=MA/ST=State/L=kh/O=Organization/OU=Organizational Unit/CN=adardour"`
+That line is a command used with OpenSSL, a tool for generating SSL certificates.
+`openssl`: This is the command itself, invoking the OpenSSL tool.
+`req`: This subcommand is used for certificate requests and management.
+`-x509`: This flag specifies that a self-signed certificate will be generated rather than a certificate signing request (CSR).
+`-nodes`: This flag indicates that the private key shouldn't be encrypted with a passphrase. This means that if someone gets access to the key, they can use it without needing a password.
+`-days` 365: This sets the expiration period for the certificate. In this case, it's set to 365 days, meaning the certificate will be valid for one year.
+`-newkey rsa:2048`: This part instructs OpenSSL to generate a new RSA key pair with a key size of 2048 bits.
+`-keyout /etc/nginx/ssl/cert.key`: Here, it specifies the output file where the generated private key (cert.key) will be saved. This path is /etc/nginx/ssl/, so the key file will be saved in that directory.
+`-out /etc/nginx/ssl/cert.crt`: This specifies the output file for the self-signed certificate (cert.crt). It will also be saved in the /etc/nginx/ssl/ directory.
+`-subj "/C=MA/ST=State/L=kh/O=Organization/OU=Organizational Unit/CN=username"`: This part sets the subject of the certificate. It contains information about the entity the certificate is being issued for. Here's what each abbreviation stands for:
+`/C=MA`: Country code (C) is set to Morocco (MA is the ISO 3166-1 alpha-2 country code for Morocco).
+`/ST=State`: State or province name (ST) is set to a placeholder value ("State").
+`/L=kh`: Locality or city name (L) is set to "kh" (which might be a placeholder, typically this would be the city name).
+`/O=Organization`: Organization name (O) is set to "Organization" (another placeholder).
+`/OU=Organizational Unit`: Organizational unit name (OU) is set to "Organizational Unit" (yet another placeholder).
+`/CN=username`: Common Name (CN) is set to "adardour". Commonly, this would be the domain name of the entity the certificate is being issued for (e.g., example.com).
