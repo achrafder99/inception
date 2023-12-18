@@ -366,6 +366,7 @@ http
 	}
 }
 ```
+
 ## Running Nginx in Foreground Mode for Logging
 If you want to keep track of all logs within your container and run Nginx in foreground mode, you have two options:
 
