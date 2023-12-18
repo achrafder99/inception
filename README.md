@@ -281,7 +281,7 @@ For example, if you want to access `nginx1` from `nginx2`, you can do so using:
 `docker exec -it nginx2 ping nginx1`
 
 # MANDATORY PART
-#### nginx
+### nginx
 NGINX (pronounced "engine-x") is a popular open-source web server, reverse proxy server, and load balancer. Originally created to solve the C10k problem (handling 10,000+ simultaneous connections), NGINX is known for its high performance, stability, and efficiency in handling concurrent connections.
 
 It's commonly used to serve web content, host applications, and manage traffic within a network. NGINX's architecture is event-driven and asynchronous, making it capable of handling a large number of requests efficiently. Its versatility also extends to serving as a reverse proxy, directing client requests to appropriate backend servers, and as a load balancer to distribute incoming traffic across multiple servers.
@@ -422,4 +422,76 @@ docker build -t nginx .
 `-t` for giving tagname to the image, `.` the dot is for where your Dockfile file is located
 ```bash
 docker -d -p 443:443 --name nginx nginx
+```
+### php-fpm + wordpress
+PHP-FPM (PHP FastCGI Process Manager) is a highly efficient and flexible PHP FastCGI (Common Gateway Interface) implementation. It's a process manager used to manage PHP processes in a web server environment to handle PHP requests.
+
+Traditionally, web servers like Apache used to embed PHP interpreter modules directly into their processes, which could sometimes lead to inefficiencies in handling PHP requests. PHP-FPM, on the other hand, separates the PHP processing from the web server, allowing for better resource management and scalability.
+
+It works by creating a pool of PHP worker processes that can handle incoming PHP requests. These processes are managed by PHP-FPM based on configuration settings like the number of child processes, handling of requests, timeouts, and more.
+
+PHP-FPM improves server performance by:
+
+Efficient Process Management: It manages PHP processes separately, allowing better control over their lifecycle and resources.
+
+Customizable Configuration: Administrators can configure settings like the number of child processes, process priorities, and resource allocation based on server requirements.
+
+Isolation: By separating PHP handling from the web server, it helps in isolating potential issues, enhancing security and stability.
+
+PHP-FPM is commonly used in conjunction with web servers like Nginx, Apache, or other FastCGI-compatible web servers to handle PHP requests efficiently in a production environment.
+
+again pull the debian using keyword `FROM`
+install php+fpm + download wp-cli for downloading wordpress
+```
+RUN apt-get update && apt-get install -y \
+    apt-utils \
+    curl \
+    gnupg \
+    lsb-release \
+    wget \
+    unzip \
+    git
+
+RUN echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/php.list
+RUN wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add -
+
+RUN apt-get update && apt-get install -y \
+    php7.4-fpm \
+    php7.4-common \
+    php7.4-cli \
+    php7.4-curl \
+    php7.4-gd \
+    php7.4-json \
+    php7.4-mbstring \
+    php7.4-mysql \
+    php7.4-xml \
+    php7.4-zip \
+    default-mysql-client \
+    php7.4-redis
+
+RUN mkdir -p  /run/php
+
+RUN chown www-data:www-data /run/php
+
+COPY ./conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+
+WORKDIR /var/www/html
+
+RUN chown -R www-data:www-data /var/www/html
+
+RUN chmod -R 755 /var/www/html
+
+COPY ./conf/wp_conf.php .
+
+COPY ./tools/script.sh .
+
+RUN chmod +x ./script.sh
+
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+
+RUN  chmod +x wp-cli.phar
+
+RUN mv wp-cli.phar /usr/local/bin/wp
+
+EXPOSE 9000
 ```
