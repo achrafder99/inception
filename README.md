@@ -280,4 +280,86 @@ Containers on the same network can communicate with each other using their conta
 For example, if you want to access `nginx1` from `nginx2`, you can do so using:
 `docker exec -it nginx2 ping nginx1`
 
+# MANDATORY PART
+#### nginx
+NGINX (pronounced "engine-x") is a popular open-source web server, reverse proxy server, and load balancer. Originally created to solve the C10k problem (handling 10,000+ simultaneous connections), NGINX is known for its high performance, stability, and efficiency in handling concurrent connections.
 
+It's commonly used to serve web content, host applications, and manage traffic within a network. NGINX's architecture is event-driven and asynchronous, making it capable of handling a large number of requests efficiently. Its versatility also extends to serving as a reverse proxy, directing client requests to appropriate backend servers, and as a load balancer to distribute incoming traffic across multiple servers.
+
+NGINX is favored for its lightweight nature, low resource consumption, and ability to handle tasks like serving static content, caching, SSL termination, and more, making it a valuable tool in modern web infrastructure
+#### TLS 
+TLS (Transport Layer Security) in Nginx refers to the protocol used to secure communication between a client (like a web browser) and the server. It ensures that the data transmitted between them remains encrypted and secure, preventing eavesdropping or tampering.
+
+In Nginx, TLS is implemented through SSL/TLS protocols, which encrypt the data and establish a secure connection. Nginx can be configured to handle TLS by setting up SSL certificates, specifying encryption algorithms, enabling security features like Perfect Forward Secrecy (PFS), and managing various security parameters to enhance the security of the communication.
+
+Configuring TLS in Nginx involves setting up SSL certificates, defining protocols and ciphers, and managing other security-related settings in the server block configuration. This ensures that the server communicates securely with clients over HTTPS, providing data confidentiality and integrity.
+
+#### 1. pull debian or alpine (use the penultimate stable version)
+  `FROM DEBIAN:bullseye`
+#### 2. update the packages and install it
+   `RUN apt-get update && apt-get install nginx -y`
+#### 3. copy the config file from your host machine to the container
+    `COPY /conf/nginx.conf /etc/nginx/nginx.conf`
+#### 4. run to container in forgound not in background
+    ` CMD ["nginx"]
+`
+user www-data;
+daemon off;
+
+events
+{
+}
+
+http
+{
+	include mime.types;
+	server {
+		listen 443 ssl default_server;
+		listen [::]:443 ssl default_server;
+
+		ssl_certificate /etc/nginx/ssl/cert.crt;
+		ssl_certificate_key /etc/nginx/ssl/cert.key;
+
+		ssl_protocols TLSv1.2;
+		ssl_ciphers 'TLS_AES_128_GCM_SHA256:TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384';
+		ssl_prefer_server_ciphers off;
+
+
+		root /var/www/html;
+
+		index index.php index.html index.htm index.nginx-debian.html;
+
+		server_name adardour.42.fr;
+
+		location / {
+
+			try_files $uri $uri/ /index.php?$args;
+		}
+
+		location ~ \.php$ {
+			fastcgi_split_path_info ^(.+\.php)(/.+)$;
+			fastcgi_pass wordpress:9000; 
+			fastcgi_index index.php;
+			include fastcgi_params;
+			fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+			fastcgi_param SCRIPT_NAME $fastcgi_script_name;
+		}
+		location ~* \.(css|js)$ {
+			access_log off;
+			expires max;
+		}
+
+		location /adminer {
+			include proxy_params;
+    		proxy_pass http://adminer:8000;
+    	}
+		location /boom {
+			include proxy_params;
+    		proxy_pass http://boom:3000;
+    	}
+		location ~ /\.ht {
+			deny all;
+	}
+}
+}
+`
