@@ -409,4 +409,7 @@ RUN chmod +x ./script.sh \
 ```Dockerfile
 RUN ./script.sh
 ```
-
+# Run the container 
+```bash
+	docker build -t nginx .
+```
