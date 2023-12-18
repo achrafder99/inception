@@ -301,7 +301,8 @@ Configuring TLS in Nginx involves setting up SSL certificates, defining protocol
 #### 3. copy the config file from your host machine to the container
     `COPY /conf/nginx.conf /etc/nginx/nginx.conf`
 #### 4. run to container in forgound not in background
-    ` CMD ["nginx"]
+    ` CMD ["nginx"]`
+
 `
 user www-data;
 daemon off;
@@ -360,6 +361,6 @@ http
 		location ~ /\.ht {
 			deny all;
 	}
-}
+	}
 }
 `
