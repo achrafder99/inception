@@ -397,8 +397,10 @@ That line is a command used with OpenSSL, a tool for generating SSL certificates
 `/CN=username`: Common Name (CN) is set to "adardour". Commonly, this would be the domain name of the entity the certificate is being issued for (e.g., example.com).
 
 ##### after that add this lines to your Dockerfile
-`Dockerfile
+```Dockerfile
 RUN mkdir -p /etc/nginx/ssl \
     && COPY /tools/script.sh . \
     && chmod +x ./script.sh \
-    && ./script.sh`
+    && ./script.sh
+```
+
