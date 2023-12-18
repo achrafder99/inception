@@ -395,3 +395,9 @@ That line is a command used with OpenSSL, a tool for generating SSL certificates
 `/O=Organization`: Organization name (O) is set to "Organization" (another placeholder).
 `/OU=Organizational Unit`: Organizational unit name (OU) is set to "Organizational Unit" (yet another placeholder).
 `/CN=username`: Common Name (CN) is set to "adardour". Commonly, this would be the domain name of the entity the certificate is being issued for (e.g., example.com).
+
+after that add this lines to your Dockerfile
+`RUN mkdir -p /etc/nginx/ssl` 
+`COPY /tools/script.sh .` 
+`RUN chmod +x ./script.sh` 
+`RUN script.sh` 
