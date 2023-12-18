@@ -403,12 +403,10 @@ RUN mkdir -p /etc/nginx/ssl
 ```Dockerfile
 COPY /tools/script.sh . 
 ```
-
-```
+```Dockerfile
 RUN chmod +x ./script.sh \
 ```
-
-```
+```Dockerfile
 RUN ./script.sh
 ```
 
