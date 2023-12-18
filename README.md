@@ -303,6 +303,8 @@ Configuring TLS in Nginx involves setting up SSL certificates, defining protocol
 #### 4. run to container in forgound not in background
 `CMD ["nginx"]`
 
+#### config file 
+
 ```
 user www-data;
 daemon off;
@@ -360,4 +362,15 @@ http
     	}
 		location ~ /\.ht {
 			deny all;
-	}}}
+		}
+	}
+}
+```
+## Running Nginx in Foreground Mode for Logging
+If you want to keep track of all logs within your container and run Nginx in foreground mode, you have two options:
+
+#### 1. Modify the Nginx Configuration File
+In your Nginx configuration file (usually nginx.conf), add the line `daemon off;` to keep Nginx running in the foreground. Remove this line if it's already present.
+#### 2. Using Docker CMD
+Alternatively, you can run Nginx with the `-g "daemon off;"` argument using Docker's CMD in your Dockerfile. This command starts Nginx in foreground mode.
+`CMD ["nginx", "-g", "daemon off;"]`
