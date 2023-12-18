@@ -295,16 +295,20 @@ In Nginx, TLS is implemented through SSL/TLS protocols, which encrypt the data a
 Configuring TLS in Nginx involves setting up SSL certificates, defining protocols and ciphers, and managing other security-related settings in the server block configuration. This ensures that the server communicates securely with clients over HTTPS, providing data confidentiality and integrity.
 
 #### 1. pull debian or alpine (use the penultimate stable version)
-```FROM debian:bullseye
+```Dockerfile
+FROM debian:bullseye
 ```
 #### 2. update the packages and install it
-```RUN apt-get update && apt install -y nginx && apt install openssl
+```Dockerfile
+RUN apt-get update && apt install -y nginx && apt install openssl
 ```
 #### 3. copy the config file from your host machine to the container
-```COPY /conf/nginx.conf /etc/nginx/nginx.conf
+```Dockerfile
+COPY /conf/nginx.conf /etc/nginx/nginx.conf
 ```
 #### 4. run to container in forgound not in background
-```CMD ["nginx"]
+```Dockerfile
+CMD ["nginx"]
 ```
 #### config file 
 ```
