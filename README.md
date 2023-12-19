@@ -534,3 +534,10 @@ Success: Generated 'wp-config.php' file.
 ```bash
 php-fpm7.4 -F
 ```
+
+```bash
+docker build -t wordpress .
+```
+```bash
+docker run -d -p 9000:9000 --name wordpress
+```
