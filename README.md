@@ -534,10 +534,33 @@ Success: Generated 'wp-config.php' file.
 ```bash
 php-fpm7.4 -F
 ```
-
+# Build and run the container
 ```bash
 docker build -t wordpress .
 ```
 ```bash
 docker run -d -p 9000:9000 --name wordpress
 ```
+# Mariadb
+Install MariaDB in your virtual machine without using Docker. Navigate to `/etc/mysql/mariadb.conf.d` and look for a file named `50-server.cnf`, then copy it inside your project. This file contains all the configurations necessary for MariaDB to run. However, you'll need to modify one setting in your `50-server.cnf` config file. Change line 27 to read as follows: `bind-address = 0.0.0.0`. This change will allow it to listen to all incoming requests, including requests from all IP addresses.
+
+```Dockerfile
+FROM debian:bullseye
+
+RUN apt-get update && apt-get install -y mariadb-server
+
+EXPOSE 3306
+COPY ./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
+
+RUN mkdir -p /var/log/mysql/
+
+RUN chmod -R 777 /var/log/mysql/
+
+COPY ./tools/script.sh .
+COPY ./tools/init.sql .
+
+RUN chmod +x ./script.sh
+
+CMD ["./script.sh"]
+```
+again in your 50-server.cnf config file change line 27 to this line `bind-address  = 0.0.0.0` to make listen to all incoming request i mean including all ip addresses
