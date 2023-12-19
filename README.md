@@ -563,4 +563,3 @@ RUN chmod +x ./script.sh
 
 CMD ["./script.sh"]
 ```
-again in your 50-server.cnf config file change line 27 to this line `bind-address  = 0.0.0.0` to make listen to all incoming request i mean including all ip addresses
