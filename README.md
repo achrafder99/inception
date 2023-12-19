@@ -494,4 +494,43 @@ RUN  chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
 EXPOSE 9000
+
+CMD ["./script.sh"]
+```
+in your www.conf config file change line 36 to this line `listen = 9000`
+This configuration is crucial when you're setting up PHP-FPM to work with a web server (like Nginx or Apache) in a containerized environment. The web server communicates with PHP-FPM through this port (9000 in this case) to process PHP files and generate dynamic content for WordPress
+
+# Download wordpress and install it automaticlly
+```bash
+wp core download --allow-root
+wp core install \
+    --url="${URL}" \
+    --title="${TITTLE}" \
+    --admin_user="${MYSQL_USER}" \
+    --admin_password="${MYSQL_PASSWORD}" \
+    --admin_email="${EMAIL}" \
+    --skip-email \
+    --allow-root
+```
+# generate wp-config.php file using wp-cli
+```bash
+$ wp config create --dbname="${DATABASES_NAME}" --dbuser="${USER}" --dbpass="${USER_PASSWORD}" --dbhost="${HOST}"
+# in dbhost you can use the name of container mariadb in this case --dbhost="mariadb"
+Success: Generated 'wp-config.php' file.
+
+# Enable WP_DEBUG and WP_DEBUG_LOG
+$ wp config create --dbname=testing --dbuser=wp --dbpass=securepswd --extra-php <<PHP
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+PHP
+Success: Generated 'wp-config.php' file.
+
+# Avoid disclosing password to bash history by reading from password.txt
+# Using --prompt=dbpass will prompt for the 'dbpass' argument
+$ wp config create --dbname=testing --dbuser=wp --prompt=dbpass < password.txt
+Success: Generated 'wp-config.php' file.
+```
+# Running php in forgound
+```bash
+php-fpm7.4 -F
 ```
